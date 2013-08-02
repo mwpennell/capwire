@@ -241,7 +241,7 @@ for (i in 1:length(alpha)){
 }
 
 ## write the file
-write.csv(two.dis, file="two_discrete_v2.csv")
+write.csv(two.dis, file="two_discrete.csv")
 
 
 
