@@ -2,6 +2,7 @@
 
 ## Matthew Pennell and Craig Miller
 ## July 19, 2013
+## Modified on Aug 6
 
 ## Purpose: 
 ## Validate the Partitioning Method under the assumptions of two versus three capture classes
@@ -176,6 +177,18 @@ partTest <- function(alpha, sd=0, n.class, n.samples, max.pop){
 	fit.part <- fitTirmPartition(sim.data, max.pop)
 	
 	part.pop <- fit.part$ml.pop.size
+    
+    ## fit Part conditionially
+    
+    p.value <- fit.part$p.value.partition
+    
+    if (p.value <= 0.1){
+    	cond.pop <- part.pop
+    	cond <- TRUE
+    } else {
+    	cond.pop <- tirm.pop
+    	cond <- FALSE
+    }
 	
 	
 	## get number of classes
@@ -192,9 +205,9 @@ partTest <- function(alpha, sd=0, n.class, n.samples, max.pop){
 		n.class <- c(n.class, 0)
 	}
 	
-	output <- c(sum(n.class), tirm.pop, part.pop, n.samples, nom.class, alpha[1], alpha[2], n.class[1], n.class[2], n.class[3], sd)
+	output <- c(sum(n.class), tirm.pop, part.pop, cond.pop, cond, n.samples, nom.class, alpha[1], alpha[2], n.class[1], n.class[2], n.class[3], sd)
 	
-	names(output) <- c("Pop.size", "Tirm.est", "Part.est", "Samples", "No.classes", "Alpha.1", "Alpha.2", "N.class.1", "N.class2", "N.class3", "Capture.sd")
+	names(output) <- c("Pop.size", "Tirm.est", "Part.est", "Cond.est", "Partitioned", "Samples", "No.classes", "Alpha.1", "Alpha.2", "N.class.1", "N.class2", "N.class3", "Capture.sd")
 	
 	return(output)
 	
@@ -214,8 +227,6 @@ alpha <- c(2, 4, 6, 8, 10)
 
 pop.size <- c(50, 100, 200)
 
-## specify population subdivision. Proportion of individuals in first class
-#sub.div <- c(0.25, 0.50, 0.75)
 
 sample.size <- c(100, 200, 300, 400, 500)
 
@@ -251,8 +262,8 @@ write.csv(two.dis, file="two_discrete.csv")
 # Three discrete classes
 
 
-alpha <- c(2, 2, 4, 4, 6)
-alpha.two <- c(3, 4, 6, 8, 10)
+alpha <- c(2, 4, 4, 6, 6)
+alpha.two <- c(4, 6, 8, 10, 12)
 
 pop.size <- c(50, 100, 200)
 
@@ -295,77 +306,77 @@ write.csv(three.dis, file="three_discrete.csv")
 
 # Two cont populations
 
-alpha <- c(2, 4, 6, 8, 10)
+# alpha <- c(2, 4, 6, 8, 10)
 
-pop.size <- c(50, 100, 200)
+# pop.size <- c(50, 100, 200)
 
-sample.size <- c(100, 200, 300, 400, 500)
+# sample.size <- c(100, 200, 300, 400, 500)
 
-two.cont <- data.frame()
+# two.cont <- data.frame()
 
-for (i in 1:length(alpha)){
-	for (j in 1:length(pop.size)){
-			for (m in 1:length(sample.size)){
+# for (i in 1:length(alpha)){
+	# for (j in 1:length(pop.size)){
+			# for (m in 1:length(sample.size)){
 				
-				class.one <- round(0.5 * pop.size[j])
-				class.two <- pop.size[j] - class.one
-				n.class <- c(class.one, class.two)
+				# class.one <- round(0.5 * pop.size[j])
+				# class.two <- pop.size[j] - class.one
+				# n.class <- c(class.one, class.two)
 								
-				tmp <- mclapply(c(1:100), function(x) partTest(alpha[i], sd=0.5, n.class=n.class, n.samples=sample.size[m], max.pop=300), mc.cores=24)
+				# tmp <- mclapply(c(1:100), function(x) partTest(alpha[i], sd=0.5, n.class=n.class, n.samples=sample.size[m], max.pop=300), mc.cores=24)
 				
-				tmp2 <- do.call(rbind, tmp)
+				# tmp2 <- do.call(rbind, tmp)
 				
-				two.cont <- rbind(two.cont, tmp2)	
+				# two.cont <- rbind(two.cont, tmp2)	
 				
-			}
-	}
-}
+			# }
+	# }
+# }
 
-## write the file
-write.csv(two.cont, file="two_continuous.csv")
-
-
+# ## write the file
+# write.csv(two.cont, file="two_continuous.csv")
 
 
 
 
-## Three cont classes
 
-alpha <- c(2, 2, 4, 4, 6)
-alpha.two <- c(3, 4, 6, 8, 10)
 
-pop.size <- c(50, 100, 200)
+# ## Three cont classes
 
-sample.size <- c(100, 200, 300, 400, 500)
+# alpha <- c(2, 2, 4, 4, 6)
+# alpha.two <- c(3, 4, 6, 8, 10)
 
-three.cont <- data.frame()
+# pop.size <- c(50, 100, 200)
 
-for (i in 1:length(alpha)){
-	for (j in 1:length(pop.size)){
-			for (m in 1:length(sample.size)){
+# sample.size <- c(100, 200, 300, 400, 500)
+
+# three.cont <- data.frame()
+
+# for (i in 1:length(alpha)){
+	# for (j in 1:length(pop.size)){
+			# for (m in 1:length(sample.size)){
 				
-				class.one <- round(1/3 * pop.size[j])
-				class.two <- round(1/3 * pop.size[j])
-				class.three <- pop.size[j] - class.one - class.two
-				n.class <- c(class.one, class.two, class.three)
+				# class.one <- round(1/3 * pop.size[j])
+				# class.two <- round(1/3 * pop.size[j])
+				# class.three <- pop.size[j] - class.one - class.two
+				# n.class <- c(class.one, class.two, class.three)
 				
-				alpha.one <- alpha[i]
-				alpha.sec <- alpha.two[i]
-				alpha.all <- c(alpha.one, alpha.sec)
+				# alpha.one <- alpha[i]
+				# alpha.sec <- alpha.two[i]
+				# alpha.all <- c(alpha.one, alpha.sec)
 								
-				tmp <- mclapply(c(1:100), function(x) partTest(alpha.all, sd=0.5, n.class=n.class, n.samples=sample.size[m], max.pop=300), mc.cores=24)
+				# tmp <- mclapply(c(1:100), function(x) partTest(alpha.all, sd=0.5, n.class=n.class, n.samples=sample.size[m], max.pop=300), mc.cores=24)
 				
-				tmp2 <- do.call(rbind, tmp)
+				# tmp2 <- do.call(rbind, tmp)
 				
-				three.cont <- rbind(three.cont, tmp2)
+				# three.cont <- rbind(three.cont, tmp2)
 				
 				
-		}
-	}
-}
+		# }
+	# }
+# }
 
-## write the file
-write.csv(three.cont, file="three_continuous.csv")
+# ## write the file
+# write.csv(three.cont, file="three_continuous.csv")
 
 
 
