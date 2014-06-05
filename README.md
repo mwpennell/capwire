@@ -17,5 +17,11 @@ library(devtools)
 install_github("mwpennell/capwire")
 ```
 
-We hope this package is useful. If you run into issues or have any suggestions, please feel free to contact us: mwpennell@gmal.com.
+We have written a [tutorial](http://mwpennell.github.io/pdfs/capwire-tutorial.pdf) documenting how the various functions can be used. This is also available as a supplement to the Pennell et al. paper.
+
+### Important note
+
+In the tutorial we describe a method for partitioning the data into subsets in order to improve population size estimation when a few individuals were overrepresented in the dataset. We intended to describe the method in detail in a subsequent publication. However, we came across some statistical issues in applying this approach and are currently working on solving these. For the time being, the functions `fitTirmPartition` and `partitionCountData` have been removed from the current package. We apologize for any inconvenience. Please feel free to contact us (mwpennell@gmail.com) if you have any questions about this.
+
+ 
 
