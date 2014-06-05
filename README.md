@@ -1,5 +1,9 @@
-# capwire
-## Estimate population census size from non-invasive genetic sampling
+capwire
+=======
+
+[![Build Status](https://travis-ci.org/mwpennell/capwire.png?branch=master)](https://travis-ci.org/mwpennell/capwire)
+
+### Estimate population census size from non-invasive genetic sampling
 
 This R package implements the Capwire population size estimators developed by Craig Miller, Paul Joyce and Lisette Waits [(paper here)](http://onlinelibrary.wiley.com/doi/10.1111/j.1365-294X.2005.02577.x/abstract). They were designed for non-invasive genetic samplings which is different than standard mark-recapture surveys in that the same individual can be detected multiple times (often many times) in the same sampling session. Details on the estimators can be found in the original paper.
 
