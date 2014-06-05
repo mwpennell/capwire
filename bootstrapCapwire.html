@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+<title>bootstrapCapwire. capwire 1.2</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="author" content="
+Matthew W. Pennell
+">
+
+<link href="css/bootstrap.css" rel="stylesheet">
+<link href="css/bootstrap-responsive.css" rel="stylesheet">
+<link href="css/highlight.css" rel="stylesheet">
+<link href="css/staticdocs.css" rel="stylesheet">
+
+<!--[if lt IE 9]>
+  <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+  </head>
+
+  <body>
+    <div class="navbar">
+  <div class="navbar-inner">
+    <div class="container">
+      <a class="brand" href="#">capwire 1.2</a>
+      <div class="nav">
+        <ul class="nav">
+          <li><a href="index.html"><i class="icon-home icon-white"></i> Index</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+    <div class="container">
+      <header>
+        
+      </header>
+      
+      <h1>Parametric bootstrap ECM and TIRM models</h1>
+
+<div class="row">
+  <div class="span8">
+    <h2>Usage</h2>
+    <pre><div>bootstrapCapwire(fit, bootstraps&nbsp;=&nbsp;1000, CI&nbsp;=&nbsp;c(0.025, 0.975))</div></pre>
+    
+    <h2>Arguments</h2>
+    <dl>
+      <dt>fit</dt>
+      <dd>a <code>capfit</code> object inherited from <code><a href='fitEcm.html'>fitEcm</a></code> or <code><a href='fitTirm.html'>fitTirm</a></code></dd>
+      <dt>bootstraps</dt>
+      <dd>The number of bootstraps to be performed (default is 1000)</dd>
+      <dt>CI</dt>
+      <dd>A vector of quantiles to to generate a confidence interval for the population estimate. The default is <code>c(0.025, 0.975)</code>, denoting a symmetrical 95 percent confidence interval.</dd>
+    </dl>
+    
+    <div class="Parametric bootstrap ECM and TIRM models">
+      <h2>Parametric bootstrap ECM and TIRM models</h2>
+      
+    </div>
+
+    <div class="Value">
+      <h2>Value</h2>
+      
+      <p>A list containing the following elements:
+<dl>
+<dt>ml.pop.size</dt><dd>The maximum likelihood estimate for the population size obtained by fitting the model</dd>
+<dt>conf.int</dt><dd>The confidence interval for the estimate of the population size</dd>
+</dl></p>
+  
+      <p></p>
+  
+    </div>
+
+    <div class="Description">
+      <h2>Description</h2>
+      
+      <p>Uses maximum likelihood parameter estimates from <code>fitEcm</code>, or <code>fitTirm</code> to perform a parametric bootstrap to get confidence intervals for the estimate of the population size</p>
+  
+    </div>
+
+    <div class="Details">
+      <h2>Details</h2>
+      
+      <p>This function uses the ML estimates obtained from fitting the model to simulate data under the model.</p>
+  
+      <p><code><a href='bootstrapCapwire.html'>bootstrapCapwire</a></code> inherits an object from <code><a href='fitEcm.html'>fitEcm</a></code> or <code><a href='fitTirm.html'>fitTirm</a></code> such that the model and parameter estimates do not need to be specified.</p>
+  
+      <p>The ML estimate for the population size will also be returned but this will not be changed by <code>bootstrapCapwire</code></p>
+  
+      <p>Note that if the model is a poor fit to the data, the confidence intervals may not be reliable.</p>
+  
+      <p>The lower confidence interval is bounded by the number of unique individuals in the sample.</p>
+  
+    </div>
+
+    <div class="References">
+      <h2>References</h2>
+      
+      <p>Miller C. R., P. Joyce and L.P. Waits. 2005. A new method for estimating the size of small populations from genetic mark-recapture data. Molecular Ecology 14:1991-2005.</p>
+  
+      <p>Pennell, M. W., C. R. Stansbury, L. P. Waits and C. R. Miller. 2013. Capwire: a R package for estimating population census size from non-invasive genetic sampling. Molecular Ecology Resources 13:154-157.</p>
+  
+    </div>
+    
+    <h2 id="examples">Examples</h2>
+    <pre class="examples"><div class='input'>## Simulate data under Equal Capture Model
+
+data &lt;- simEcm(n=40, s=150)
+
+## Fit Equal Capture Model to Data
+
+res &lt;- fitEcm(data=data, max.pop=200)
+
+## Perform bootstrap to get confidence intervals
+
+ci &lt;- bootstrapCapwire(fit=res, bootstraps=50, CI = c(0.025, 0.975))
+ci
+</div>
+<div class='output'>$ml.pop.size
+[1] 39
+
+$conf.int
+  2.5%  97.5% 
+36.225 39.000 
+
+</div></pre>
+  </div>
+  <div class="span4">
+    <!-- <ul>
+      <li>bootstrapCapwire</li>
+    </ul>
+    <ul>
+      
+    </ul> -->
+      
+    <h2>See also</h2>
+    
+<code><a href='fitTirm.html'>fitTirm</a></code>, <code><a href='fitEcm.html'>fitEcm</a></code>
+
+    
+    <h2>Author</h2>
+    
+Matthew W. Pennell
+
+    
+  </div>
+</div>
+      
+      <footer>
+      <p class="pull-right"><a href="#">Back to top</a></p>
+<p>Built by <a href="https://github.com/hadley/staticdocs">staticdocs</a>. Styled with <a href="http://twitter.github.com/bootstrap">bootstrap</a>.</p>
+      </footer>
+    </div>
+  </body>
+</html>

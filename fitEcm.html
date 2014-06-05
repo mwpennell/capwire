@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+<title>fitEcm. capwire 1.2</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="author" content="
+Matthew W. Pennell
+">
+
+<link href="css/bootstrap.css" rel="stylesheet">
+<link href="css/bootstrap-responsive.css" rel="stylesheet">
+<link href="css/highlight.css" rel="stylesheet">
+<link href="css/staticdocs.css" rel="stylesheet">
+
+<!--[if lt IE 9]>
+  <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+  </head>
+
+  <body>
+    <div class="navbar">
+  <div class="navbar-inner">
+    <div class="container">
+      <a class="brand" href="#">capwire 1.2</a>
+      <div class="nav">
+        <ul class="nav">
+          <li><a href="index.html"><i class="icon-home icon-white"></i> Index</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+    <div class="container">
+      <header>
+        
+      </header>
+      
+      <h1>Fit Equal Capture Model (ECM)</h1>
+
+<div class="row">
+  <div class="span8">
+    <h2>Usage</h2>
+    <pre><div>fitEcm(data, max.pop)</div></pre>
+    
+    <h2>Arguments</h2>
+    <dl>
+      <dt>data</dt>
+      <dd>A two-column data frame with the first column specifiying the capture class (i.e. individuals in class i were caught i times) and the second column specifying the number of individuals in each class</dd>
+      <dt>max.pop</dt>
+      <dd>The maximum population size</dd>
+    </dl>
+    
+    <div class="Fit Equal Capture Model (ECM)">
+      <h2>Fit Equal Capture Model (ECM)</h2>
+      
+    </div>
+
+    <div class="Value">
+      <h2>Value</h2>
+      
+      <p>an object of class <code>capfit</code> containing the follow elements:
+<dl>
+<dt>model</dt><dd>The model specified</dd>
+<dt>likelihood</dt><dd>The likelihood of the model</dd>
+<dt>ml.pop.size</dt><dd>The maximum likelihood estimate for population size</dd>
+<dt>cap.ind</dt><dd>The mean number of captures per individual</dd>
+<dt>sampled.ind</dt><dd>The total number of individuals in the sample</dd>
+<dt>sample.size</dt><dd>Total number of samples in the data set</dd>
+<dt>max.pop</dt><dd>The maximum population size specified by <code>max.pop</code></dd>
+</dl></p>
+  
+      <p></p>
+  
+    </div>
+
+    <div class="Description">
+      <h2>Description</h2>
+      
+      <p>Fits the Equal Capture Model (ECM) to count data to obtain the MLE for population size</p>
+  
+    </div>
+
+    <div class="Details">
+      <h2>Details</h2>
+      
+      <p>The ECM model fit by this function assumes that all individuals are equally likely to be "captured".</p>
+  
+      <p>The value is specified for <code>max.pop</code> is not likely to matter as long as it is much greater than the maximum likelihood estimate for population size.</p>
+  
+      <p>Note that if the data contains only singletons, the data is not informative and the maximum likelihood estimate for population size will be equal to <code>max.pop</code></p>
+  
+    </div>
+
+    <div class="References">
+      <h2>References</h2>
+      
+      <p>Miller C. R., P. Joyce and L.P. Waits. 2005. A new method for estimating the size of small populations from genetic mark-recapture data. Molecular Ecology 14:1991-2005.</p>
+  
+      <p>Pennell, M. W., C. R. Stansbury, L. P. Waits and C. R. Miller. 2013. Capwire: a R package for estimating population census size from non-invasive genetic sampling. Molecular Ecology Resources 13:154-157.</p>
+  
+    </div>
+    
+    <h2 id="examples">Examples</h2>
+    <pre class="examples"><div class='input'>## Simulate data under Equal Capture Model
+
+data &lt;- simEcm(n=40, s=150)
+
+## Fit Equal Capture Model to Data
+
+res &lt;- fitEcm(data=data, max.pop=200)
+
+res
+</div>
+<div class='output'>$model
+[1] &quot;Equal.capture&quot;
+
+$likelihood
+[1] -549.5342
+
+$ml.pop.size
+[1] 39
+
+$cap.ind
+[1] 3.846154
+
+$sampled.ind
+[1] 39
+
+$sample.size
+[1] 150
+
+$max.pop
+[1] 200
+
+attr(,&quot;class&quot;)
+[1] &quot;list&quot;   &quot;capfit&quot;
+</div></pre>
+  </div>
+  <div class="span4">
+    <!-- <ul>
+      <li>fitEcm</li>
+    </ul>
+    <ul>
+      
+    </ul> -->
+      
+    <h2>See also</h2>
+    
+<code><a href='simEcm.html'>simEcm</a></code>
+
+    
+    <h2>Author</h2>
+    
+Matthew W. Pennell
+
+    
+  </div>
+</div>
+      
+      <footer>
+      <p class="pull-right"><a href="#">Back to top</a></p>
+<p>Built by <a href="https://github.com/hadley/staticdocs">staticdocs</a>. Styled with <a href="http://twitter.github.com/bootstrap">bootstrap</a>.</p>
+      </footer>
+    </div>
+  </body>
+</html>

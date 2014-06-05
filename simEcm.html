@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+<title>simEcm. capwire 1.2</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="author" content="
+Matthew W. Pennell
+">
+
+<link href="css/bootstrap.css" rel="stylesheet">
+<link href="css/bootstrap-responsive.css" rel="stylesheet">
+<link href="css/highlight.css" rel="stylesheet">
+<link href="css/staticdocs.css" rel="stylesheet">
+
+<!--[if lt IE 9]>
+  <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+  </head>
+
+  <body>
+    <div class="navbar">
+  <div class="navbar-inner">
+    <div class="container">
+      <a class="brand" href="#">capwire 1.2</a>
+      <div class="nav">
+        <ul class="nav">
+          <li><a href="index.html"><i class="icon-home icon-white"></i> Index</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+    <div class="container">
+      <header>
+        
+      </header>
+      
+      <h1>Simulate data under Equal Capture Model (TIRM)</h1>
+
+<div class="row">
+  <div class="span8">
+    <h2>Usage</h2>
+    <pre><div>simEcm(n, s)</div></pre>
+    
+    <h2>Arguments</h2>
+    <dl>
+      <dt>n</dt>
+      <dd>Number of individuals in the population</dd>
+      <dt>s</dt>
+      <dd>Total number of samples collected</dd>
+    </dl>
+    
+    <div class="Simulate data under Equal Capture Model (TIRM)">
+      <h2>Simulate data under Equal Capture Model (TIRM)</h2>
+      
+    </div>
+
+    <div class="Value">
+      <h2>Value</h2>
+      
+      <p>A two-column matrix with the first column specifiying the capture class (i.e. individuals caught i times) and the second column specifying the number of individuals in each class.</p>
+  
+      <p>The matrix can be used as the data argument for any of the model-fitting functions implemented in capwire</p>
+  
+    </div>
+
+    <div class="Description">
+      <h2>Description</h2>
+      
+      <p>Simulates capture count data under the assumptions of the Equal Capture Model (ECM) where all individuals in the population are assumed to be equally likely to be captured.</p>
+  
+    </div>
+
+    <div class="References">
+      <h2>References</h2>
+      
+      <p>Miller C. R., P. Joyce and L.P. Waits. 2005. A new method for estimating the size of small populations from genetic mark-recapture data. Molecular Ecology 14:1991-2005. Pennell, M. W., C. R. Stansbury, L. P. Waits and C. R. Miller. Capwrie: a R package for estimating population census size from non-invasive genetic sampling</p>
+  
+    </div>
+    
+    <h2 id="examples">Examples</h2>
+    <pre class="examples"><div class='input'>## Simualte data under Equal Capture Model
+
+data &lt;- simEcm(n=25, s=100)
+
+## Fit the Equal Capture Model
+
+ecm &lt;- fitEcm(data=data, max.pop=200)
+ecm
+</div>
+<div class='output'>$model
+[1] &quot;Equal.capture&quot;
+
+$likelihood
+[1] -321.8876
+
+$ml.pop.size
+[1] 25
+
+$cap.ind
+[1] 4
+
+$sampled.ind
+[1] 25
+
+$sample.size
+[1] 100
+
+$max.pop
+[1] 200
+
+attr(,&quot;class&quot;)
+[1] &quot;list&quot;   &quot;capfit&quot;
+</div></pre>
+  </div>
+  <div class="span4">
+    <!-- <ul>
+      <li>simEcm</li>
+    </ul>
+    <ul>
+      
+    </ul> -->
+      
+    <h2>See also</h2>
+    
+<code><a href='fitEcm.html'>fitEcm</a></code>
+
+    
+    <h2>Author</h2>
+    
+Matthew W. Pennell
+
+    
+  </div>
+</div>
+      
+      <footer>
+      <p class="pull-right"><a href="#">Back to top</a></p>
+<p>Built by <a href="https://github.com/hadley/staticdocs">staticdocs</a>. Styled with <a href="http://twitter.github.com/bootstrap">bootstrap</a>.</p>
+      </footer>
+    </div>
+  </body>
+</html>

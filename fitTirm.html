@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+<title>fitTirm. capwire 1.2</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="author" content="
+Matthew W. Pennell
+">
+
+<link href="css/bootstrap.css" rel="stylesheet">
+<link href="css/bootstrap-responsive.css" rel="stylesheet">
+<link href="css/highlight.css" rel="stylesheet">
+<link href="css/staticdocs.css" rel="stylesheet">
+
+<!--[if lt IE 9]>
+  <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+  </head>
+
+  <body>
+    <div class="navbar">
+  <div class="navbar-inner">
+    <div class="container">
+      <a class="brand" href="#">capwire 1.2</a>
+      <div class="nav">
+        <ul class="nav">
+          <li><a href="index.html"><i class="icon-home icon-white"></i> Index</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+    <div class="container">
+      <header>
+        
+      </header>
+      
+      <h1>Fit Two Innate Rates Model (TIRM)</h1>
+
+<div class="row">
+  <div class="span8">
+    <h2>Usage</h2>
+    <pre><div>fitTirm(data, max.pop, max.iter&nbsp;=&nbsp;20)</div></pre>
+    
+    <h2>Arguments</h2>
+    <dl>
+      <dt>data</dt>
+      <dd>A two-column data frame with the first column specifiying the capture class (i.e. individuals in class i were caught i times) and the second column specifying the number of individuals in each class</dd>
+      <dt>max.pop</dt>
+      <dd>The maximum population size</dd>
+      <dt>max.iter</dt>
+      <dd>The maximum number of iterations to acheive convergence. The default will be more than enough for most cases</dd>
+    </dl>
+    
+    <div class="Fit Two Innate Rates Model (TIRM)">
+      <h2>Fit Two Innate Rates Model (TIRM)</h2>
+      
+    </div>
+
+    <div class="Value">
+      <h2>Value</h2>
+      
+      <p>an object of class <code>capfit</code> containing the follow elements:
+<dl>
+<dt>model</dt><dd>The model specified</dd>
+<dt>likelihood</dt><dd>The likelihood of the model</dd>
+<dt>ml.pop.size</dt><dd>The maximum likelihood estimate for population size</dd>
+<dt>ml.na</dt><dd>The maximum likelihood estimate for the number of individuals in class A</dd>
+<dt>ml.nb</dt><dd>The maximum likelihood estimate for the number of individuals in class B</dd>
+<dt>alpha</dt><dd>The ratio of the rates of captures between class A and class B individuals</dd>
+<dt>cap.ind</dt><dd>The mean number of captures per individual</dd>
+<dt>sampled.ind</dt><dd>The total number of individuals in the sample</dd>
+<dt>sample.size</dt><dd>Total number of samples in the data set</dd>
+<dt>max.pop</dt><dd>The maximum population size specified by <code>max.pop</code></dd>
+</dl></p>
+  
+      <p></p>
+  
+    </div>
+
+    <div class="Description">
+      <h2>Description</h2>
+      
+      <p>Fits the Two Innate Rates Model (TIRM) to count data to obtain the MLE for population size</p>
+  
+    </div>
+
+    <div class="Details">
+      <h2>Details</h2>
+      
+      <p>The TIRM model fit by this function assumes that individuals can be assigned to two classes. Class A represent the frequently captured individuals. Class B represents the infrequently captured individuals.</p>
+  
+      <p>The value is specified for <code>max.pop</code> is not likely to matter as long as it is much greater than the maximum likelihood estimate for population size.</p>
+  
+      <p>Note that if the data contains only singletons, the data is not informative and the maximum likelihood estimate for population size will be equal to <code>max.pop</code></p>
+  
+    </div>
+
+    <div class="References">
+      <h2>References</h2>
+      
+      <p>Miller C. R., P. Joyce and L.P. Waits. 2005. A new method for estimating the size of small populations from genetic mark-recapture data. Molecular Ecology 14:1991-2005.</p>
+  
+      <p>Pennell, M. W., C. R. Stansbury, L. P. Waits and C. R. Miller. 2013. Capwire: a R package for estimating population census size from non-invasive genetic sampling. Molecular Ecology Resources 13:154-157.</p>
+  
+    </div>
+    
+    <h2 id="examples">Examples</h2>
+    <pre class="examples"><div class='input'>## Simulate data under Two Innate Rates Model
+
+data &lt;- simTirm(na=20, nb=15, a=4, s=150)
+
+## Fit Two Innate Rates Model to Data
+
+res &lt;- fitTirm(data=data, max.pop=200)
+res
+</div>
+<div class='output'>$model
+[1] &quot;Two.innate.rates&quot;
+
+$likelihood
+[1] -485.0682
+
+$ml.pop.size
+[1] 35
+
+$ml.na
+[1] 11
+
+$ml.nb
+[1] 24
+
+$alpha
+[1] 4.497217
+
+$cap.ind
+[1] 4.6875
+
+$sampled.ind
+[1] 32
+
+$sample.size
+[1] 150
+
+$max.pop
+[1] 200
+
+attr(,&quot;class&quot;)
+[1] &quot;list&quot;   &quot;capfit&quot;
+</div></pre>
+  </div>
+  <div class="span4">
+    <!-- <ul>
+      <li>fitTirm</li>
+    </ul>
+    <ul>
+      
+    </ul> -->
+      
+    <h2>See also</h2>
+    
+<code><a href='simTirm.html'>simTirm</a></code>
+
+    
+    <h2>Author</h2>
+    
+Matthew W. Pennell
+
+    
+  </div>
+</div>
+      
+      <footer>
+      <p class="pull-right"><a href="#">Back to top</a></p>
+<p>Built by <a href="https://github.com/hadley/staticdocs">staticdocs</a>. Styled with <a href="http://twitter.github.com/bootstrap">bootstrap</a>.</p>
+      </footer>
+    </div>
+  </body>
+</html>

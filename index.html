@@ -1,79 +1,140 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="en">
   <head>
-    <meta charset='utf-8' />
-    <meta http-equiv="X-UA-Compatible" content="chrome=1" />
-    <meta name="description" content="Capwire : capwire r pacakge" />
+    <meta charset="utf-8">
+<title>Index. capwire 1.2</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="author" content="Matthew W. Pennell, Carisa Stansbury, Lisette Waits and Craig R. Miller">
 
-    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
+<link href="css/bootstrap.css" rel="stylesheet">
+<link href="css/bootstrap-responsive.css" rel="stylesheet">
+<link href="css/highlight.css" rel="stylesheet">
+<link href="css/staticdocs.css" rel="stylesheet">
 
-    <title>Capwire</title>
+<!--[if lt IE 9]>
+  <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
   </head>
 
   <body>
-
-    <!-- HEADER -->
-    <div id="header_wrap" class="outer">
-        <header class="inner">
-          <a id="forkme_banner" href="https://github.com/mwpennell/capwire">View on GitHub</a>
-
-          <h1 id="project_title">Capwire</h1>
-          <h2 id="project_tagline">capwire r pacakge</h2>
-
-            <section id="downloads">
-              <a class="zip_download_link" href="https://github.com/mwpennell/capwire/zipball/master">Download this project as a .zip file</a>
-              <a class="tar_download_link" href="https://github.com/mwpennell/capwire/tarball/master">Download this project as a tar.gz file</a>
-            </section>
-        </header>
+    <div class="navbar">
+  <div class="navbar-inner">
+    <div class="container">
+      <a class="brand" href="#">capwire 1.2</a>
+      <div class="nav">
+        <ul class="nav">
+          <li><a href="index.html"><i class="icon-home icon-white"></i> Index</a></li>
+        </ul>
+      </div>
     </div>
+  </div>
+</div>
 
-    <!-- MAIN CONTENT -->
-    <div id="main_content_wrap" class="outer">
-      <section id="main_content" class="inner">
-        <h3>
-<a name="welcome-to-github-pages" class="anchor" href="#welcome-to-github-pages"><span class="octicon octicon-link"></span></a>Welcome to GitHub Pages.</h3>
+    <div class="container">
+      <header>
+        
+      </header>
+      
+      <div class="row">
+  <div class="span8">
+    <h1>capwire</h1>
 
-<p>This automatic page generator is the easiest way to create beautiful pages for all of your projects. Author your page content here using GitHub Flavored Markdown, select a template crafted by a designer, and publish. After your page is generated, you can check out the new branch:</p>
+<p><a href="https://travis-ci.org/mwpennell/capwire"><img src="https://travis-ci.org/mwpennell/capwire.png?branch=master" alt="Build Status"/></a></p>
 
-<pre><code>$ cd your_repo_root/repo_name
-$ git fetch origin
-$ git checkout gh-pages
+<h3>Estimate population census size from non-invasive genetic sampling</h3>
+
+<p>This R package implements the Capwire population size estimators developed by Craig Miller, Paul Joyce and Lisette Waits <a href="http://onlinelibrary.wiley.com/doi/10.1111/j.1365-294X.2005.02577.x/abstract">(paper here)</a>. They were designed for non-invasive genetic samplings which is different than standard mark-recapture surveys in that the same individual can be detected multiple times (often many times) in the same sampling session. Details on the estimators can be found in the original paper.</p>
+
+<p>This package is the collaborative work of <a href="http://mwpennell.github.io">Matthew Pennell</a>, Carisa Stansbury, <a href="http://www.uidaho.edu/cnr/fishwild/lisettewaits">Lisette Waits</a>, and <a href="http://www.uidaho.edu/sci/math/faculty/craigmiller">Craig Miller</a>. The package is described in <a href="http://mwpennell.github.io/pdfs/pennell-mer-2012.pdf">this paper</a>.</p>
+
+<p>To install the package directly from github, the easiest way is to install using
+<a href="https://github.com/hadley/devtools">devtools</a>. Install <code>devtools</code>, then type</p>
+
+<pre><code>library(devtools)
+install_github(&quot;mwpennell/capwire&quot;)
 </code></pre>
 
-<p>If you're using the GitHub for Mac, simply sync your repository and you'll see the new branch.</p>
+<p>We have written a <a href="http://mwpennell.github.io/pdfs/capwire-tutorial.pdf">tutorial</a> documenting how the various functions can be used. This is also available as a supplement to the Pennell et al. paper.</p>
 
-<h3>
-<a name="designer-templates" class="anchor" href="#designer-templates"><span class="octicon octicon-link"></span></a>Designer Templates</h3>
+<h3>Important note</h3>
 
-<p>We've crafted some handsome templates for you to use. Go ahead and continue to layouts to browse through them. You can easily go back to edit your page before publishing. After publishing your page, you can revisit the page generator and switch to another theme. Your Page content will be preserved if it remained markdown format.</p>
+<p>In the tutorial we describe a method for partitioning the data into subsets in order to improve population size estimation when a few individuals were overrepresented in the dataset. We intended to describe the method in detail in a subsequent publication. However, we came across some statistical issues in applying this approach and are currently working on solving these. For the time being, the functions <code>fitTirmPartition</code> and <code>partitionCountData</code> have been removed from the current package. We apologize for any inconvenience. Please feel free to contact us (<a href="mailto:mwpennell@gmail.com">mwpennell@gmail.com</a>) if you have any questions about this.</p>
 
-<h3>
-<a name="rather-drive-stick" class="anchor" href="#rather-drive-stick"><span class="octicon octicon-link"></span></a>Rather Drive Stick?</h3>
 
-<p>If you prefer to not use the automatic generator, push a branch named <code>gh-pages</code> to your repository to create a page manually. In addition to supporting regular HTML content, GitHub Pages support Jekyll, a simple, blog aware static site generator written by our own Tom Preston-Werner. Jekyll makes it easy to create site-wide headers and footers without having to copy them across every page. It also offers intelligent blog support and other advanced templating features.</p>
+    <h2>Help topics</h2>
 
-<h3>
-<a name="authors-and-contributors" class="anchor" href="#authors-and-contributors"><span class="octicon octicon-link"></span></a>Authors and Contributors</h3>
-
-<p>You can <a href="https://github.com/blog/821" class="user-mention">@mention</a> a GitHub username to generate a link to their profile. The resulting <code>&lt;a&gt;</code> element will link to the contributor's GitHub Profile. For example: In 2007, Chris Wanstrath (<a href="https://github.com/defunkt" class="user-mention">@defunkt</a>), PJ Hyett (<a href="https://github.com/pjhyett" class="user-mention">@pjhyett</a>), and Tom Preston-Werner (<a href="https://github.com/mojombo" class="user-mention">@mojombo</a>) founded GitHub.</p>
-
-<h3>
-<a name="support-or-contact" class="anchor" href="#support-or-contact"><span class="octicon octicon-link"></span></a>Support or Contact</h3>
-
-<p>Having trouble with Pages? Check out the documentation at <a href="http://help.github.com/pages">http://help.github.com/pages</a> or contact <a href="mailto:support@github.com">support@github.com</a> and we’ll help you sort it out.</p>
-      </section>
-    </div>
-
-    <!-- FOOTER  -->
-    <div id="footer_wrap" class="outer">
-      <footer class="inner">
-        <p class="copyright">Capwire maintained by <a href="https://github.com/mwpennell">mwpennell</a></p>
-        <p>Published with <a href="http://pages.github.com">GitHub Pages</a></p>
+    <h3></h3>
+    
+    
+    <ul class="index">
+        
+      <li>
+        <code><a href="bootstrapCapwire.html">bootstrapCapwire</a></code><br />Parametric bootstrap ECM and TIRM models</li>
+            
+      <li>
+        <code><a href="buildClassTable.html">buildClassTable</a></code><br />Convert capture counts to table of capture classes</li>
+            
+      <li>
+        <code><a href="capwire.html">capwire</a></code>(capwire-capwire, capwire-package)<br />Capwire: estimate population census size from non-invasive genetic sampling</li>
+            
+      <li>
+        <code><a href="drawCapRatesBeta.html">drawCapRatesBeta</a></code><br />Create a exponential distribution of capture rates for simulation</li>
+            
+      <li>
+        <code><a href="drawCapRatesExp.html">drawCapRatesExp</a></code><br />Create a exponential distribution of capture rates for simulation</li>
+            
+      <li>
+        <code><a href="drawCapRatesGamma.html">drawCapRatesGamma</a></code><br />Create a gamma distribution of capture rates for simulation</li>
+            
+      <li>
+        <code><a href="drawCapRatesGeom.html">drawCapRatesGeom</a></code><br />Create a geometric distribution of capture rates for simulation</li>
+            
+      <li>
+        <code><a href="drawCapRatesUnif.html">drawCapRatesUnif</a></code><br />Create a uniform distribution of capture rates for simulation</li>
+            
+      <li>
+        <code><a href="fitEcm.html">fitEcm</a></code><br />Fit Equal Capture Model (ECM)</li>
+            
+      <li>
+        <code><a href="fitTirm.html">fitTirm</a></code><br />Fit Two Innate Rates Model (TIRM)</li>
+            
+      <li>
+        <code><a href="lrtCapwire.html">lrtCapwire</a></code><br />Likelihood ratio test comparing TIRM to ERM</li>
+            
+      <li>
+        <code><a href="simCapture.html">simCapture</a></code><br />simCapture</li>
+            
+      <li>
+        <code><a href="simEcm.html">simEcm</a></code><br />Simulate data under Equal Capture Model (TIRM)</li>
+            
+      <li>
+        <code><a href="simTirm.html">simTirm</a></code><br />Simulate data under Two Innate Rates Model (TIRM)</li>
+            
+      <li>
+        <code><a href="wombat.html">wombat</a></code><br />Wombat dataset
+</li>
+    
+    </ul>
+  </div>
+  
+  <div class="span3 offset1">
+        
+    <h2>Dependencies</h2>
+    <ul>
+      <li><strong>Depends</strong>: </li>
+      <li><strong>Imports</strong>: </li>
+      <li><strong>Suggests</strong>: </li>
+      <li><strong>Extends</strong>: </li>
+    </ul>
+     
+    
+  </div>
+</div>
+      
+      <footer>
+      <p class="pull-right"><a href="#">Back to top</a></p>
+<p>Built by <a href="https://github.com/hadley/staticdocs">staticdocs</a>. Styled with <a href="http://twitter.github.com/bootstrap">bootstrap</a>.</p>
       </footer>
     </div>
-
-    
-
   </body>
 </html>

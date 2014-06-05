@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+<title>lrtCapwire. capwire 1.2</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="author" content="
+Matthew W. Pennell
+">
+
+<link href="css/bootstrap.css" rel="stylesheet">
+<link href="css/bootstrap-responsive.css" rel="stylesheet">
+<link href="css/highlight.css" rel="stylesheet">
+<link href="css/staticdocs.css" rel="stylesheet">
+
+<!--[if lt IE 9]>
+  <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+  </head>
+
+  <body>
+    <div class="navbar">
+  <div class="navbar-inner">
+    <div class="container">
+      <a class="brand" href="#">capwire 1.2</a>
+      <div class="nav">
+        <ul class="nav">
+          <li><a href="index.html"><i class="icon-home icon-white"></i> Index</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+    <div class="container">
+      <header>
+        
+      </header>
+      
+      <h1>Likelihood ratio test comparing TIRM to ERM</h1>
+
+<div class="row">
+  <div class="span8">
+    <h2>Usage</h2>
+    <pre><div>lrtCapwire(ecm, tirm, bootstraps&nbsp;=&nbsp;100)</div></pre>
+    
+    <h2>Arguments</h2>
+    <dl>
+      <dt>ecm</dt>
+      <dd>A <code>capfit</code> object inherited from <code><a href='fitEcm.html'>fitEcm</a></code></dd>
+      <dt>tirm</dt>
+      <dd>A <code>capfit</code> object inherited from <code><a href='fitTirm.html'>fitTirm</a></code></dd>
+      <dt>bootstraps</dt>
+      <dd>The number of parameteric bootstraps to perform to generate the null distribution</dd>
+    </dl>
+    
+    <div class="Likelihood ratio test comparing TIRM to ERM">
+      <h2>Likelihood ratio test comparing TIRM to ERM</h2>
+      
+    </div>
+
+    <div class="Value">
+      <h2>Value</h2>
+      
+      <p>A list consisting of the following items
+<dl>
+<dt>LR</dt><dd>Likelihood ratio</dd>
+<dt>p.value</dt><dd>P-value for the siginficance of the likelihood ratio test derived from a parametric bootstrap</dd>
+</dl></p>
+  
+      <p></p>
+  
+    </div>
+
+    <div class="Description">
+      <h2>Description</h2>
+      
+      <p>Performs Likelihood Ratio Test to compare model fits between the Equal Capture Model (ECM) and Two Innate-Rates Model (TIRM).</p>
+  
+      <p>A parametric bootstrap is used to generate a null-distribution for the likelihood ratio test-statistic to assess significance</p>
+  
+    </div>
+
+    <div class="Details">
+      <h2>Details</h2>
+      
+      <p>The maximum likelihood estimate for population size under the ECM model is used to simulate data under the ECM model. The data is then fit to both the ECM and TIRM models and the likelihood ratio test is evaluated.</p>
+  
+      <p>The observed Likelihood Ratio statistic is then compared to the distribution of likelihood ratio statistics observed when the null model is true in order to estimate a p-value.</p>
+  
+      <p>In most applications of likelihood ratio tests, the more parameterized model will always have a higher likelihood. However, this is not necessarily the case for the models implemented in <code>capwire</code>.The likelihood involves a combinatorial term which denotes the number of ways a population could give rise to the observed vector of counts. As such, for some data sets (such as those for which the assumptions of the ECM model are valid),there will be more ways to obtain the observed data if the population is not subdivided into classes.</p>
+  
+    </div>
+
+    <div class="References">
+      <h2>References</h2>
+      
+      <p>Miller C. R., P. Joyce and L.P. Waits. 2005. A new method for estimating the size of small populations from genetic mark-recapture data. Molecular Ecology 14:1991-2005.</p>
+  
+      <p>Pennell, M. W., C. R. Stansbury, L. P. Waits and C. R. Miller. 2013. Capwire: a R package for estimating population census size from non-invasive genetic sampling. Molecular Ecology Resources 13:154-157.</p>
+  
+    </div>
+    
+    <h2 id="examples">Examples</h2>
+    <pre class="examples"><div class='input'>## Simulate data under Equal Capture Model
+
+data &lt;- simEcm(n=20, s=60)
+
+## Fit Equal Capture Model (ECM) to count data
+
+ecm &lt;- fitEcm(data, max.pop=200)
+
+## Fit Two-Innate Rates Model (TIRM) to count data
+
+tirm &lt;- fitTirm(data, max.pop=200)
+
+## Perform Likelihood Ratio Test
+
+lrtCapwire(ecm=ecm, tirm=tirm, bootstraps=10)
+</div>
+<div class='output'>$LR
+[1] 8.453352
+
+$p.value
+[1] 0.1818182
+
+</div></pre>
+  </div>
+  <div class="span4">
+    <!-- <ul>
+      <li>lrtCapwire</li>
+    </ul>
+    <ul>
+      
+    </ul> -->
+      
+    <h2>See also</h2>
+    
+<code><a href='fitTirm.html'>fitTirm</a></code>, <code><a href='fitEcm.html'>fitEcm</a></code>
+
+    
+    <h2>Author</h2>
+    
+Matthew W. Pennell
+
+    
+  </div>
+</div>
+      
+      <footer>
+      <p class="pull-right"><a href="#">Back to top</a></p>
+<p>Built by <a href="https://github.com/hadley/staticdocs">staticdocs</a>. Styled with <a href="http://twitter.github.com/bootstrap">bootstrap</a>.</p>
+      </footer>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+<title>drawCapRatesGamma. capwire 1.2</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="author" content="">
+
+<link href="css/bootstrap.css" rel="stylesheet">
+<link href="css/bootstrap-responsive.css" rel="stylesheet">
+<link href="css/highlight.css" rel="stylesheet">
+<link href="css/staticdocs.css" rel="stylesheet">
+
+<!--[if lt IE 9]>
+  <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+  </head>
+
+  <body>
+    <div class="navbar">
+  <div class="navbar-inner">
+    <div class="container">
+      <a class="brand" href="#">capwire 1.2</a>
+      <div class="nav">
+        <ul class="nav">
+          <li><a href="index.html"><i class="icon-home icon-white"></i> Index</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+    <div class="container">
+      <header>
+        
+      </header>
+      
+      <h1>Create a gamma distribution of capture rates for simulation</h1>
+
+<div class="row">
+  <div class="span8">
+    <h2>Usage</h2>
+    <pre><div>drawCapRatesGamma(shape, rate)</div></pre>
+    
+    <h2>Arguments</h2>
+    <dl>
+      <dt>shape</dt>
+      <dd>gamma shape parameter</dd>
+      <dt>rate</dt>
+      <dd>gamma rate parameter</dd>
+    </dl>
+    
+    <div class="Create a gamma distribution of capture rates for simulation">
+      <h2>Create a gamma distribution of capture rates for simulation</h2>
+      
+    </div>
+
+    <div class="Value">
+      <h2>Value</h2>
+      
+      <p>a function which takes an argument <code>n</code> that can be then used to simulate capture rates with <code><a href='simCapture.html'>simCapture</a></code></p>
+  
+    </div>
+
+    <div class="Description">
+      <h2>Description</h2>
+      
+      <p>Can be used in conjunction with <code><a href='simCapture.html'>simCapture</a></code></p>
+  
+    </div>
+    
+    <h2 id="examples">Examples</h2>
+    <pre class="examples"><div class='input'>## Specify a gamma distribution
+gd &lt;- drawCapRatesGamma(1,0.5)
+simCapture(n=20, s=100, gd)
+</div>
+<div class='output'>      capture.class n.ind
+ [1,]             1     7
+ [2,]             2     2
+ [3,]             4     2
+ [4,]             7     2
+ [5,]             8     1
+ [6,]             9     1
+ [7,]            10     1
+ [8,]            12     1
+ [9,]            13     1
+[10,]            15     1
+</div></pre>
+  </div>
+  <div class="span4">
+    <!-- <ul>
+      <li>drawCapRatesGamma</li>
+    </ul>
+    <ul>
+      
+    </ul> -->
+      
+    <h2>See also</h2>
+    
+<code><a href='simCapture.html'>simCapture</a></code> <code><a href='http://www.inside-r.org/packages/cran/stats/docs/GammaDist'>rgamma</a></code>
+
+        
+  </div>
+</div>
+      
+      <footer>
+      <p class="pull-right"><a href="#">Back to top</a></p>
+<p>Built by <a href="https://github.com/hadley/staticdocs">staticdocs</a>. Styled with <a href="http://twitter.github.com/bootstrap">bootstrap</a>.</p>
+      </footer>
+    </div>
+  </body>
+</html>
