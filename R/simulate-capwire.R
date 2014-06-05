@@ -90,8 +90,6 @@ simEcm <- function(n, s){
 
 
 #' @title simCapture
-#'
-#' @aliases drawCapRatesUnif, drawCapRatesExp, drawCapRatesGamma, drawCapRatesGeom
 #' 
 #' @description Simulates capture count data where individual capture rates are assumed to be drawn from a specified distribution.
 #' 
@@ -109,7 +107,7 @@ simEcm <- function(n, s){
 #' 
 #' We also assume that the individual capturabilities are drawn from some distribution.
 #' 
-#' The distribution is specified by the \code{dist.func} argument. \code{dist.func} takes a function with parameter n, where n specifies the number of samples to be drawn.\code{simCapture} can take any distribution of this form but the \code{capwire} package includes several functions which allow for users to draw capture rates from several standard distribution such as a uniform (\code{drawCapRatesUnif}), exponential (\code{drawCapRatesExp}), gamma (\code{drawCapRatesGamma}), geometric (\code{drawCapRatesGeom}), and beta (\code{drawCapRatesBeta}).
+#' The distribution is specified by the \code{dist.func} argument. \code{dist.func} takes a function with parameter n, where n specifies the number of samples to be drawn.\code{simCapture} can take any distribution of this form but the \code{capwire} package includes several functions which allow for users to draw capture rates from several standard distribution such as a uniform (\code{\link{drawCapRatesUnif}}), exponential (\code{\link{drawCapRatesExp}}), gamma (\code{\link{drawCapRatesGamma}}), geometric (\code{\link{drawCapRatesGeom}}), and beta (\code{\link{drawCapRatesBeta}}).
 #'
 #' @return If \code{return.cap.probs=FALSE}: A two-column matrix with the first column specifiying the capture class (i.e. individuals caught i times) and the second column specifying the number of individuals in each class.
 #' 
@@ -168,32 +166,113 @@ simCapture <- function(n, s, dist.func, return.cap.probs=FALSE){
 }
 
 
+#' @title Create a uniform distribution of capture rates for simulation
+#'
+#' @description Can be used in conjunction with \code{\link{simCapture}}
+#'
+#' @param lower lower bound of uniform distribution
+#'
+#' @param upper upper bound of uniform distribution
+#'
+#' @return a function which takes an argument \code{n} that can be then used to simulate capture rates with \code{\link{simCapture}}
+#'
+#' @seealso \code{\link{simCapture}} \code{\link{runif}}
+#'
 #' @export drawCapRatesUnif
-#' @aliases simCapture
+#'
+#' @examples
+#' ## Specify a uniform distribution
+#' ud <- drawCapRatesUnif(0,1)
+#' simCapture(n=20, s=100, ud)
+#' 
 drawCapRatesUnif <-function(lower, upper){
 	function(n) runif(n, min=lower, max=upper)
 }
 
+#' @title Create a geometric distribution of capture rates for simulation
+#'
+#' @description Can be used in conjunction with \code{\link{simCapture}}
+#'
+#' @param p geometric sampling probability
+#'
+#' @return a function which takes an argument \code{n} that can be then used to simulate capture rates with \code{\link{simCapture}}
+#'
+#' @seealso \code{\link{simCapture}} \code{\link{rgeom}}
+#'
 #' @export drawCapRatesGeom
-#' @aliases simCapture
+#'
+#' @examples
+#' ## Specify a geometric distribution
+#' md <- drawCapRatesGeom(0.5)
+#' simCapture(n=20, s=100, md)
+#' 
 drawCapRatesGeom <- function(p){
 	function(n) rgeom(n, prob=p)
 }
 
+#' @title Create a gamma distribution of capture rates for simulation
+#'
+#' @description Can be used in conjunction with \code{\link{simCapture}}
+#'
+#' @param shape gamma shape parameter
+#'
+#' @param rate gamma rate parameter
+#'
+#' @return a function which takes an argument \code{n} that can be then used to simulate capture rates with \code{\link{simCapture}}
+#'
+#' @seealso \code{\link{simCapture}} \code{\link{rgamma}}
+#'
 #' @export drawCapRatesGamma
-#' @aliases simCapture
+#'
+#' @examples
+#' ## Specify a gamma distribution
+#' gd <- drawCapRatesGamma(1,0.5)
+#' simCapture(n=20, s=100, gd)
+#' 
 drawCapRatesGamma <- function(shape, rate){
 	function(n) rgamma(n, shape=shape, rate=rate)
 }
 
+#' @title Create a exponential distribution of capture rates for simulation
+#'
+#' @description Can be used in conjunction with \code{\link{simCapture}}
+#'
+#' @param r exponential rate parameter
+#'
+#' @return a function which takes an argument \code{n} that can be then used to simulate capture rates with \code{\link{simCapture}}
+#'
+#' @seealso \code{\link{simCapture}} \code{\link{rexp}}
+#'
 #' @export drawCapRatesExp
-#' @aliases simCapture
+#'
+#' @examples
+#' ## Specify an exponential distribution
+#' ed <- drawCapRatesExp(0.5)
+#' simCapture(n=20, s=100, ed)
+#' 
 drawCapRatesExp <- function(r){
 	function(n) rexp(n, rate=r)
 }
 
+#' @title Create a exponential distribution of capture rates for simulation
+#'
+#' @description Can be used in conjunction with \code{\link{simCapture}}
+#'
+#' @param shape1 first shape parameter of beta distribution
+#'
+#' @param shape2 second shape parameter of beta distribution
+#'
+#' @return a function which takes an argument \code{n} that can be then used to simulate capture rates with \code{\link{simCapture}}
+#'
+#' @seealso \code{\link{simCapture}} \code{\link{rbeta}}
+#'
 #' @export drawCapRatesBeta
-#' @aliases simCapture
+#'
+#' @examples
+#' ## Specify a beta distribution
+#' bd <- drawCapRatesBeta(1, 0.5)
+#' simCapture(n=20, s=100, bd)
+#' 
 drawCapRatesBeta <- function(shape1, shape2){
 	function(n) rbeta(n, shape1, shape2)
 }
