@@ -32,17 +32,15 @@
 #' d
 #'
 buildClassTable <- function(counts){
-    if (!inherits(counts, "numeric"))
-        stop("counts needs to be a numeric vector")
-    
-    uni <- unique(counts)
-    r <- sort(sapply(uni, function(x) length(counts[counts == x])))
-    res <- lapply(unique(r), function(x) c(x, length(r[r == x])))
-    res <- do.call(rbind, res)
-    colnames(res) <- c("capture.class", "n.ind")
-    res
+  if (!inherits(counts, "numeric"))
+    stop("counts needs to be a numeric vector")
+  
+  uni <- sort(unique(counts))
+  r <- sapply(uni, function(x) length(counts[counts == x]))
+  res <- cbind(uni, r)
+  colnames(res) <- c("capture.class", "n.ind")
+  res
 }
-
 
 ## check capwire object
 check.capwire.data <- function(x){
