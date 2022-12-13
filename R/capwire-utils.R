@@ -46,7 +46,7 @@ buildClassTable <- function(counts){
 
 ## check capwire object
 check.capwire.data <- function(x){
-    if (class(x) != "data.frame" & class(x) != "matrix")
+    if (!"matrix" %in% class(x) & !"data.frame" %in% class(x))
         stop("data must be entered as either a 'data.frame' or 'matrix'")
 
     if (ncol(x) != 2)
